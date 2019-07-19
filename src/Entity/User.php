@@ -43,6 +43,11 @@ class User
      */
     private $imgVehicule;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $admin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,18 @@ class User
     public function setImgVehicule(string $imgVehicule): self
     {
         $this->imgVehicule = $imgVehicule;
+
+        return $this;
+    }
+
+    public function getAdmin(): ?bool
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(bool $admin): self
+    {
+        $this->admin = $admin;
 
         return $this;
     }
