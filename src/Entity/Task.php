@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -20,61 +21,75 @@ class Task
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
+     * @Assert\LessThan(propertyPath="livraisonDate")
      */
     private $dateStart;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
+     * @Assert\GreaterThan(propertyPath="dateStart")
      */
     private $livraisonDate;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $imgTask;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $lieuRetrait;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $lieuLivraison;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $remuneration;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $imgVehicule;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $taskCategory;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $authorId;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $livreurId;
 
